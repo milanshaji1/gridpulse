@@ -17,11 +17,13 @@ FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 DAILY_VARS = "temperature_2m_max,temperature_2m_min"
 
 
-def _get_with_retry(url: str, params: dict, attempts: int = 4) -> requests.Response:
+def _get_with_retry(
+    url: str, params: dict, attempts: int = 4, timeout: int = 90
+) -> requests.Response:
     """Open-Meteo's free tier is occasionally slow; retry with backoff."""
     for i in range(attempts):
         try:
-            resp = requests.get(url, params=params, timeout=90)
+            resp = requests.get(url, params=params, timeout=timeout)
             resp.raise_for_status()
             return resp
         except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as e:
@@ -66,6 +68,7 @@ def fetch_forecast(region: str, days: int = 3) -> pd.DataFrame:
     resp = _get_with_retry(
         FORECAST_URL,
         attempts=2,  # callers degrade gracefully; don't stall the pipeline
+        timeout=20,
         params={
             "latitude": meta["lat"],
             "longitude": meta["lon"],

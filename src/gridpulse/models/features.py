@@ -55,9 +55,11 @@ def build_features(df: pd.DataFrame | None = None) -> pd.DataFrame:
             )
 
     # Day-of weather: proxy for the day-ahead forecast available at 6pm D-1.
-    feats["tmax"] = df["tmax"]
-    feats["tmin"] = df["tmin"]
-    feats["tmax_lag1"] = g["tmax"].shift(1)
+    # Coerce to float: rows appended at serving time may carry None temps
+    # (forecast API outage), which would otherwise poison the dtype.
+    feats["tmax"] = pd.to_numeric(df["tmax"], errors="coerce")
+    feats["tmin"] = pd.to_numeric(df["tmin"], errors="coerce")
+    feats["tmax_lag1"] = pd.to_numeric(g["tmax"].shift(1), errors="coerce")
     # Temperature swing vs yesterday - heat ramps drive demand surprises.
     feats["tmax_delta"] = feats["tmax"] - feats["tmax_lag1"]
 

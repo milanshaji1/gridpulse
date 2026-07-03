@@ -36,6 +36,12 @@ class UsageTracker:
     @property
     def client(self) -> anthropic.Anthropic:
         if self._client is None:
+            if not os.environ.get("ANTHROPIC_API_KEY"):
+                raise SystemExit(
+                    "ANTHROPIC_API_KEY is not set. The analyst agent needs it for "
+                    "`make brief` and `make evals` - get a key at "
+                    "https://console.anthropic.com and export it first."
+                )
             self._client = anthropic.Anthropic()
         return self._client
 
