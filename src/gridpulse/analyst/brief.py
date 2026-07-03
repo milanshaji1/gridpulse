@@ -7,10 +7,17 @@ with any unverified figure is NOT published (non-zero exit).
 from __future__ import annotations
 
 import sys
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 from gridpulse import db
 from gridpulse.analyst import verify
+from gridpulse.config import NEM_TZ
+
+
+def nem_today() -> date:
+    """Today in NEM time (AEST) - CI runners are on UTC, a day behind."""
+    return datetime.now(ZoneInfo(NEM_TZ)).date()
 from gridpulse.analyst.llm import UsageTracker, log_run
 from gridpulse.analyst.tools import TOOL_SCHEMAS, execute_tool
 from gridpulse.config import BRIEFS_DIR, REPORTS_DIR
@@ -91,7 +98,7 @@ def latest_complete_day() -> date:
 
 
 def generate_brief(brief_date: date | None = None) -> tuple[str, dict]:
-    brief_date = brief_date or date.today()
+    brief_date = brief_date or nem_today()
     report_day = latest_complete_day()
     tracker = UsageTracker()
 
