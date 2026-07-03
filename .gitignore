@@ -10,3 +10,6 @@ data/*.duckdb.wal
 .env
 .DS_Store
 models_artifacts/
+
+# personal prep docs - keep local only
+INTERVIEW_PREP.md
