@@ -1,5 +1,7 @@
 name: Daily brief
 
+# Runs every morning before the Australian business day: ingest -> quality
+# gates -> forecast -> generate + verify brief -> commit.
 on:
   schedule:
     # 21:00 UTC = 07:00 AEST - before the Australian business day.
