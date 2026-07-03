@@ -1,8 +1,8 @@
 # Resume bullets for GridPulse
 
-Use 2–4 of these under a "Projects" heading. Items marked ⏳ have a
-placeholder — run the command shown to measure the real number, then fill it
-in. Never ship a placeholder on a real resume.
+Use 2–4 of these under a "Projects" heading. All numbers are measured from
+real runs (backtest: reports/backtest_results.json; evals: evals/results.json;
+brief cost: reports/run_log.jsonl).
 
 ## The bullets
 
@@ -17,14 +17,16 @@ in. Never ship a placeholder on a real resume.
   the PR-AUC of climatology**.
 
 - Engineered an **LLM analyst agent** (Claude tool-use over SQL) that writes
-  daily market briefings in which **every cited figure is programmatically
-  re-verified against the source database before publication** — unverified
-  briefs are blocked, turning "trust the model" into "trust the data".
+  daily market briefings in which **every cited figure (26 per brief) is
+  programmatically re-verified against the source database before
+  publication** — unverified briefs are blocked — at **~$0.07 and ~30 seconds
+  per brief**, replacing hours of manual analysis.
 
 - Built an **LLM evaluation harness**: a 30-question golden set with
   ground-truth answers computed from the warehouse, scored deterministically
-  with per-question cost and latency, making model choice a measured
-  accuracy/cost tradeoff. ⏳ accuracy & $/brief: `make evals` / `make brief`
+  with per-question cost and latency — the agent scored **100% (30/30) at
+  $0.008 per question**, making model choice a measured accuracy/cost
+  tradeoff.
 
 - Deployed as a **fully automated daily pipeline** (GitHub Actions cron:
   ingest → quality gates → forecast → brief → verify → publish) with a public

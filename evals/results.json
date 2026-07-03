@@ -1,0 +1,283 @@
+{
+  "summary": {
+    "asof": "2026-07-04",
+    "model": "claude-sonnet-5",
+    "n_questions": 30,
+    "n_correct": 30,
+    "accuracy": 1.0,
+    "total_cost_usd": 0.2316,
+    "mean_latency_s": 4.46
+  },
+  "results": [
+    {
+      "question": "What was the average 5-minute spot price in NSW1 on 2026-07-02?",
+      "truth": "73.58",
+      "answer": "73.58",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 4.0,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum 5-minute spot price in NSW1 on 2026-07-02?",
+      "truth": "134.89",
+      "answer": "134.89",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 4.11,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the peak demand in MW in NSW1 on 2026-07-02?",
+      "truth": "9776.65",
+      "answer": "9776.65",
+      "correct": true,
+      "cost_usd": 0.00746,
+      "latency_s": 5.78,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute intervals in NSW1 had a negative price between 2026-06-26 and 2026-07-02 inclusive?",
+      "truth": "0",
+      "answer": "0",
+      "correct": true,
+      "cost_usd": 0.0079,
+      "latency_s": 3.99,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the average 5-minute spot price in QLD1 on 2026-07-02?",
+      "truth": "76.21",
+      "answer": "76.21",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 3.76,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum 5-minute spot price in QLD1 on 2026-07-02?",
+      "truth": "128.91",
+      "answer": "128.91",
+      "correct": true,
+      "cost_usd": 0.0076,
+      "latency_s": 4.98,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the peak demand in MW in QLD1 on 2026-07-02?",
+      "truth": "7723.98",
+      "answer": "7723.98",
+      "correct": true,
+      "cost_usd": 0.00741,
+      "latency_s": 3.99,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute intervals in QLD1 had a negative price between 2026-06-26 and 2026-07-02 inclusive?",
+      "truth": "4",
+      "answer": "4",
+      "correct": true,
+      "cost_usd": 0.0079,
+      "latency_s": 4.59,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the average 5-minute spot price in SA1 on 2026-07-02?",
+      "truth": "-6.55",
+      "answer": "-6.55",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 3.97,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum 5-minute spot price in SA1 on 2026-07-02?",
+      "truth": "105.1",
+      "answer": "105.10",
+      "correct": true,
+      "cost_usd": 0.00761,
+      "latency_s": 4.56,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the peak demand in MW in SA1 on 2026-07-02?",
+      "truth": "2401.87",
+      "answer": "2401.87",
+      "correct": true,
+      "cost_usd": 0.00739,
+      "latency_s": 4.65,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute intervals in SA1 had a negative price between 2026-06-26 and 2026-07-02 inclusive?",
+      "truth": "303",
+      "answer": "303",
+      "correct": true,
+      "cost_usd": 0.00788,
+      "latency_s": 3.84,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the average 5-minute spot price in TAS1 on 2026-07-02?",
+      "truth": "33.82",
+      "answer": "33.82",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 4.14,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum 5-minute spot price in TAS1 on 2026-07-02?",
+      "truth": "88.21",
+      "answer": "88.21",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 4.31,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the peak demand in MW in TAS1 on 2026-07-02?",
+      "truth": "1372.64",
+      "answer": "1372.64",
+      "correct": true,
+      "cost_usd": 0.00741,
+      "latency_s": 4.3,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute intervals in TAS1 had a negative price between 2026-06-26 and 2026-07-02 inclusive?",
+      "truth": "22",
+      "answer": "22",
+      "correct": true,
+      "cost_usd": 0.0079,
+      "latency_s": 4.6,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the average 5-minute spot price in VIC1 on 2026-07-02?",
+      "truth": "8.09",
+      "answer": "8.09",
+      "correct": true,
+      "cost_usd": 0.00764,
+      "latency_s": 4.66,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum 5-minute spot price in VIC1 on 2026-07-02?",
+      "truth": "179.75",
+      "answer": "179.75",
+      "correct": true,
+      "cost_usd": 0.0076,
+      "latency_s": 5.63,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the peak demand in MW in VIC1 on 2026-07-02?",
+      "truth": "8246.49",
+      "answer": "8246.49",
+      "correct": true,
+      "cost_usd": 0.00741,
+      "latency_s": 3.81,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute intervals in VIC1 had a negative price between 2026-06-26 and 2026-07-02 inclusive?",
+      "truth": "207",
+      "answer": "207",
+      "correct": true,
+      "cost_usd": 0.0079,
+      "latency_s": 4.53,
+      "n_calls": 2
+    },
+    {
+      "question": "Which region had the highest average spot price on 2026-07-02?",
+      "truth": "QLD1",
+      "answer": "QLD1",
+      "correct": true,
+      "cost_usd": 0.0079,
+      "latency_s": 4.73,
+      "n_calls": 2
+    },
+    {
+      "question": "Which region had the lowest average spot price on 2026-07-02?",
+      "truth": "SA1",
+      "answer": "SA1",
+      "correct": true,
+      "cost_usd": 0.0076,
+      "latency_s": 5.09,
+      "n_calls": 2
+    },
+    {
+      "question": "Which region had the highest peak demand on 2026-07-02?",
+      "truth": "NSW1",
+      "answer": "NSW1",
+      "correct": true,
+      "cost_usd": 0.00775,
+      "latency_s": 4.23,
+      "n_calls": 2
+    },
+    {
+      "question": "How many region-days had at least one price spike above $300/MWh between 2026-06-03 and 2026-07-02 inclusive?",
+      "truth": "10",
+      "answer": "10",
+      "correct": true,
+      "cost_usd": 0.00784,
+      "latency_s": 6.34,
+      "n_calls": 2
+    },
+    {
+      "question": "Which region had the most spike intervals (prices >= $300/MWh) between 2026-06-03 and 2026-07-02 inclusive?",
+      "truth": "SA1",
+      "answer": "SA1",
+      "correct": true,
+      "cost_usd": 0.00839,
+      "latency_s": 3.97,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the highest single 5-minute price across all regions between 2026-06-03 and 2026-07-02 inclusive?",
+      "truth": "20300.0",
+      "answer": "20300.00",
+      "correct": true,
+      "cost_usd": 0.00784,
+      "latency_s": 4.61,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the average of NSW1's daily average prices between 2026-06-26 and 2026-07-02?",
+      "truth": "101.36",
+      "answer": "101.36",
+      "correct": true,
+      "cost_usd": 0.00788,
+      "latency_s": 4.88,
+      "n_calls": 2
+    },
+    {
+      "question": "On which date did VIC1 record its highest maximum price between 2026-06-03 and 2026-07-02 inclusive?",
+      "truth": "2026-06-22",
+      "answer": "2026-06-22",
+      "correct": true,
+      "cost_usd": 0.00841,
+      "latency_s": 3.96,
+      "n_calls": 2
+    },
+    {
+      "question": "What was the maximum temperature in Brisbane (QLD1) on 2026-07-02?",
+      "truth": "22.9",
+      "answer": "22.9",
+      "correct": true,
+      "cost_usd": 0.0074,
+      "latency_s": 3.77,
+      "n_calls": 2
+    },
+    {
+      "question": "How many 5-minute price observations are in the warehouse for SA1 on 2026-07-02?",
+      "truth": "288",
+      "answer": "288",
+      "correct": true,
+      "cost_usd": 0.00772,
+      "latency_s": 4.17,
+      "n_calls": 2
+    }
+  ]
+}

@@ -74,9 +74,17 @@ regions) + daily weather, all data-quality gates green (38 tests).
 Alerting on just 1 day in 5, the model catches 71% of real spike days —
 +13.6 pp over both baselines, with double their PR-AUC.
 
-**Verifier**: the hallucination gate is proven by tests — a seeded fabricated
-figure is detected and blocks publication (`tests/test_verify.py`). Golden-set
-accuracy/cost numbers are produced by `make evals` on first live run.
+**LLM analyst — measured on live runs** (claude-sonnet-5):
+
+| Metric | Result |
+|---|---|
+| Golden-set accuracy (30 questions, deterministic scoring) | **100% (30/30)** |
+| Cost per eval question / per daily brief | $0.008 / **$0.07** |
+| Citations per brief, all re-verified against the DB | 26 |
+| Brief generation latency | ~31s |
+
+The hallucination gate is additionally proven by tests — a seeded fabricated
+figure is detected and blocks publication (`tests/test_verify.py`).
 
 A fun by-product of the data-quality gates: they flagged *negative* demand in
 South Australia (−311 MW). Investigation showed it's real — SA rooftop solar
@@ -121,7 +129,12 @@ natively) rather than failing.
   archiving true day-ahead forecasts and retraining once enough accumulate.
 - **The verifier checks figures, not narrative.** A brief could cite correct
   numbers and still mis-narrate causality; the golden-set evals and the
-  structural prompt mitigate but don't eliminate this.
+  structural prompt mitigate but don't eliminate this. Case in point from the
+  first live run: AEMO's current-month file trailed the market, so
+  "yesterday" had one 5-minute interval ingested — every cited figure
+  verified, yet the narrative described a full day from a single observation.
+  Fix: the generator now anchors the brief to the most recent *complete*
+  trading day (`n_intervals >= 285`), determined from the data, not the clock.
 - **What I'd do next:** probabilistic price *level* forecasts (pinball loss),
   generator outage data (AEMO MMS) as features, per-region models, and a
   proper LLM-judge for narrative quality tracked over time.

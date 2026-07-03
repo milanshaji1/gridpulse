@@ -7,8 +7,9 @@ with any unverified figure is NOT published (non-zero exit).
 from __future__ import annotations
 
 import sys
-from datetime import date, timedelta
+from datetime import date
 
+from gridpulse import db
 from gridpulse.analyst import verify
 from gridpulse.analyst.llm import UsageTracker, log_run
 from gridpulse.analyst.tools import TOOL_SCHEMAS, execute_tool
@@ -70,15 +71,36 @@ def run_agent(user_prompt: str, tracker: UsageTracker, max_tokens: int = 4000) -
     raise RuntimeError("agent exceeded tool-turn limit")
 
 
+def latest_complete_day() -> date:
+    """Most recent day with (near-)full 5-minute coverage in the warehouse.
+
+    AEMO's current-month file trails the live market, so a naive 'yesterday'
+    can be a day with a handful of intervals - technically verifiable figures
+    that misrepresent the day. Report on complete days only.
+    """
+    con = db.connect(read_only=True)
+    try:
+        row = con.execute(
+            "SELECT max(date) FROM daily WHERE n_intervals >= 285"
+        ).fetchone()
+    finally:
+        con.close()
+    if row is None or row[0] is None:
+        raise SystemExit("No complete trading day in the warehouse - run `make ingest`.")
+    return row[0]
+
+
 def generate_brief(brief_date: date | None = None) -> tuple[str, dict]:
     brief_date = brief_date or date.today()
-    yesterday = brief_date - timedelta(days=1)
+    report_day = latest_complete_day()
     tracker = UsageTracker()
 
     draft = run_agent(
-        f"Write the NEM daily brief for {brief_date.isoformat()}. "
-        f"'Yesterday' means {yesterday.isoformat()}. Use the tools to ground "
-        f"every figure, then output ONLY the final markdown brief.",
+        f"Write the NEM daily brief for {brief_date.isoformat()}. The most "
+        f"recent COMPLETE trading day in the warehouse is {report_day.isoformat()} "
+        f"- 'Yesterday at a glance' and 'Notable events' must cover that day "
+        f"(later days are only partially ingested; ignore them). Use the tools "
+        f"to ground every figure, then output ONLY the final markdown brief.",
         tracker,
     )
 
