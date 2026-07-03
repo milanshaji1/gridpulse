@@ -1,0 +1,48 @@
+name: Daily brief
+
+on:
+  schedule:
+    # 21:00 UTC = 07:00 AEST - before the Australian business day.
+    - cron: "0 21 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -q -e ".[dev]"
+
+      - name: Ingest latest market data
+        run: .venv/bin/python -m gridpulse.ingest.run --months 24
+
+      - name: Data-quality gates
+        run: .venv/bin/python -m pytest tests/test_data_quality.py -q
+
+      - name: Train + forecast tomorrow
+        run: .venv/bin/python -m gridpulse.models.train
+
+      - name: Generate and verify brief
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: .venv/bin/python -m gridpulse.analyst.brief
+
+      - name: Commit brief
+        run: |
+          git config user.name "gridpulse-bot"
+          git config user.email "actions@github.com"
+          git add reports/briefs reports/run_log.jsonl
+          git diff --cached --quiet || git commit -m "Daily brief $(date -u +%F)"
+          git push
