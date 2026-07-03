@@ -1,5 +1,7 @@
 # ⚡ GridPulse — AI Market Analyst for Australia's Electricity Grid
 
+[![Daily brief](https://github.com/milanshaji1/gridpulse/actions/workflows/daily.yml/badge.svg)](https://github.com/milanshaji1/gridpulse/actions/workflows/daily.yml)
+
 **A production-shaped ML + LLM system on live market data.** GridPulse ingests
 5-minute price and demand data from Australia's National Electricity Market
 (NEM), forecasts next-day **price-spike risk** per region with a backtested
