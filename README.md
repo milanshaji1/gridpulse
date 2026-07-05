@@ -140,6 +140,12 @@ natively) rather than failing.
 - **What I'd do next:** probabilistic price *level* forecasts (pinball loss),
   generator outage data (AEMO MMS) as features, per-region models, and a
   proper LLM-judge for narrative quality tracked over time.
+- **The verification pattern is portable.** The same verify-before-publish
+  discipline is reused in
+  [gesture-canvas](https://github.com/milanshaji1/gesture-canvas) — a
+  real-time TouchDesigner graphics project where an LLM "scene director"'s
+  JSON output is schema-validated before it touches the live render. Swap
+  "SQL re-execution against a warehouse" for "schema validation"; same gate.
 
 ## Repo map
 
