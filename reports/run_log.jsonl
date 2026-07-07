@@ -4,3 +4,4 @@
 {"model": "claude-sonnet-5", "n_calls": 5, "input_tokens": 16832, "output_tokens": 4323, "cost_usd": 0.11534, "latency_s": 41.42, "date": "2026-07-04", "n_citations": 25, "n_failed": 0, "verified": true}
 {"model": "claude-sonnet-5", "n_calls": 6, "input_tokens": 18932, "output_tokens": 3260, "cost_usd": 0.1057, "latency_s": 42.66, "date": "2026-07-05", "n_citations": 21, "n_failed": 0, "verified": true}
 {"model": "claude-sonnet-5", "n_calls": 4, "input_tokens": 11641, "output_tokens": 3314, "cost_usd": 0.08463, "latency_s": 40.84, "date": "2026-07-07", "n_citations": 18, "n_failed": 0, "verified": true}
+{"model": "claude-sonnet-5", "n_calls": 5, "input_tokens": 14492, "output_tokens": 2884, "cost_usd": 0.08674, "latency_s": 45.41, "date": "2026-07-08", "n_citations": 20, "n_failed": 0, "verified": true}
